@@ -3,8 +3,8 @@ frame_interval = 3
 image_size = (512, 512)
 
 # Define dataset
-root = None
-data_path = "CSV_PATH"
+root = "path/to/video/clips/root"
+data_path = "path/to/general/data/csv/file"
 use_image_transform = False
 num_workers = 4
 
@@ -19,7 +19,7 @@ model = dict(
     type="STDiT-XL/2",
     space_scale=1.0,
     time_scale=1.0,
-    from_pretrained=None,
+    from_pretrained="path/to/pretrained/512model.pth",
     enable_flashattn=True,
     enable_layernorm_kernel=True,
 )
