@@ -160,7 +160,7 @@ def main():
     # ======================================================
     dataset = DatasetFromCSV2(
         cfg.data_path,
-        "**********/HD-VG-130M/hdvg_results/jackie_new2.csv",
+        cfg.data_path2,
         # TODO: change transforms
         transform=(
             get_transforms_video(cfg.image_size[0])
