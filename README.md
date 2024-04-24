@@ -15,12 +15,12 @@
 Follow the instructions below to setup opensora environment.  
 
 Follow the dataset processing instructions to prepare the dataset. Use the same prompts to generate videos of **few shot examples**. General video data and few shot data should be in the same root directory.  First column should be relative path from root directory to the video file. Second column should be the prompt.
-Modify **configs/opensora/train/16x512x512.py** to setup checkpoints path and general data path.
+Modify **configs/opensora/train/16x512x512v2.py** to setup checkpoints path and general data path.
 
 In **scripts/train2.py** modify **line 163** to point to the few shot csv file. 
 Run training by 
 ```
-CUDA_VISIBLE_DEVICES=GPU_IND torchrun --nnodes=1 --nproc_per_node=NUM_GPUs scripts/train2.py configs/opensora/train/16x512x512.py 
+CUDA_VISIBLE_DEVICES=GPU_IND torchrun --nnodes=1 --nproc_per_node=NUM_GPUs scripts/train2.py configs/opensora/train/16x512x512v2.py 
 ```
 
 ## Open-Sora: Democratizing Efficient Video Production for All
