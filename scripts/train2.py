@@ -38,6 +38,7 @@ from opensora.utils.config_utils import (
 )
 from opensora.utils.misc import all_reduce_mean, format_numel_str, get_model_numel, requires_grad, to_torch_dtype
 from opensora.utils.train_utils import update_ema
+from opensora.datasets import video_transforms
 
 class DatasetFromCSV2(DatasetFromCSV):
     """load video according to the csv file.
@@ -79,9 +80,12 @@ class DatasetFromCSV2(DatasetFromCSV):
         if self.is_video:
             vframes, aframes, info = torchvision.io.read_video(filename=path, pts_unit="sec", output_format="TCHW")
             total_frames = len(vframes)
+            fps = info["video_fps"]
+            temp_frame_interval = int(fps/8)
+            temp_temporal_sample = video_transforms.TemporalRandomCrop(self.num_frames * temp_frame_interval)
 
             # Sampling video frames
-            start_frame_ind, end_frame_ind = self.temporal_sample(total_frames)
+            start_frame_ind, end_frame_ind = temp_temporal_sample(total_frames)
             assert (
                 end_frame_ind - start_frame_ind >= self.num_frames
             ), f"{path} with index {index} has not enough frames."
