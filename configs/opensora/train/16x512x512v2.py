@@ -1,5 +1,4 @@
 num_frames = 16
-frame_interval = 3
 image_size = (512, 512)
 
 # Define dataset

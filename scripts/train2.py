@@ -172,7 +172,7 @@ def main():
             else get_transforms_image(cfg.image_size[0])
         ),
         num_frames=cfg.num_frames,
-        frame_interval=cfg.frame_interval,
+        # frame_interval=cfg.frame_interval,
         root=cfg.root,
     )
 
